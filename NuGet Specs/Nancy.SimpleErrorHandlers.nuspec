@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>Nancy.SimpleErrorHandling</id>
+        <version>0.0.0</version>
+        <title>Nancy - Simple Error Handling</title>
+        <authors>Justin Adler</authors>
+        <owners>Justin Adler</owners>
+        <licenseUrl>https://raw.githubusercontent.com/PureKrome/Nancy.SimpleErrorHandlers/master/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/PureKrome/Nancy.SimpleErrorHandlers</projectUrl>
+        <iconUrl>http://i.imgur.com/bR4Yf.jpg</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>This library contains some simple error classes for a consistent way to handle errors in a NancyFX application.</description>
+        <summary>Core base class libraries for the OpenRealEstate library.</summary>
+        <copyright>2014</copyright>
+        <language>en-AU</language>
+        <tags>nancy error errorhandling openrealestate worlddomination worldomination unicorn magicalunicorn magical-unicorn</tags>
+        <dependencies>
+            <dependency id="Nancy" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\Code\Nancy.SimpleErrorHandlers\bin\Release\Nancy.SimpleErrorHandlers.dll" target="lib\net45\Nancy.SimpleErrorHandlers.dll" />
+    </files>
+</package>
