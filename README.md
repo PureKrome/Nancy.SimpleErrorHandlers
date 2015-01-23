@@ -1,2 +1,2 @@
-# Nancy.SimpleErrorHandlers
-Some simple error handlers for a NancyFX application
+# Nancy.JsonErrorHandler
+A JSON error handling standard for NancyFx applications.
