@@ -16,7 +16,7 @@
         <language>en-AU</language>
         <tags>nancy error errorhandling openrealestate worlddomination worldomination unicorn magicalunicorn magical-unicorn</tags>
         <dependencies>
-            <dependency id="Nancy" />
+            <dependency id="Nancy" version="0.23.2" />
         </dependencies>
     </metadata>
     <files>
