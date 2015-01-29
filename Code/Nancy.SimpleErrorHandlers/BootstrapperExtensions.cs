@@ -19,7 +19,7 @@ namespace Nancy.SimpleErrorHandlers
             pipelines.OnError += (context, exception) =>
             {
                 context.Items.Add(AnyExceptionAsJsonKey, exception);
-                context.Items.Add(IncludeSecretInformationForExceptionsKey, includeSecretInformation);
+                context.IncludeSecretInformationForJsonErrorExceptions(includeSecretInformation);
                 return null;
             };
         }
