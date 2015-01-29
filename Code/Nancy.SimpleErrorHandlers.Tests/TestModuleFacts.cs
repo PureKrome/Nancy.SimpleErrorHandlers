@@ -26,6 +26,27 @@ namespace Nancy.SimpleErrorHandlers.Tests
                 model.Message.ShouldBe("Oh noes! This isn't implemented :(");
                 model.Errors.ShouldBe(null);
             }
+
+            [Fact]
+            public void GivenAGetRequestAndIncludeSomeSecretInformation_GetSimpleError_ReturnsAJsonResult()
+            {
+                // Arrange.
+                var bootstrapper = new JsonErrorsBootstrapper(true);
+                var browser = new Browser(bootstrapper);
+
+                // Act.
+                var result = browser.Get("/simpleError");
+
+                // Assert.
+                result.StatusCode.ShouldBe(HttpStatusCode.InternalServerError);
+                result.ContentType.ShouldBe("application/json; charset=utf-8");
+
+                var model = result.Body.DeserializeJson<JsonFullErrorViewModel>();
+                model.Message.ShouldBe("Oh noes! This isn't implemented :(");
+                model.Errors.ShouldBe(null);
+                model.StackTrace.ShouldStartWith("   at Nancy.SimpleErrorHandlers.Tests.TestModule.GetSimpleError()");
+                model.Source.ShouldBe("Nancy.SimpleErrorHandlers.Tests");
+            }
         }
 
         public class GetComplexErrorFacts
@@ -38,7 +59,7 @@ namespace Nancy.SimpleErrorHandlers.Tests
                 var browser = new Browser(bootstrapper);
 
                 // Act.
-                var result = browser.Get("/complexError", with => { with.HttpRequest(); });
+                var result = browser.Get("/complexError");
 
                 // Assert.
                 result.StatusCode.ShouldBe(HttpStatusCode.BadRequest);

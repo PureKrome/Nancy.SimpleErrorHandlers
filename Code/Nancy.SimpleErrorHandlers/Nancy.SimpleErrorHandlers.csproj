@@ -43,6 +43,7 @@
     <Compile Include="JsonErrorStatusCodeHandler.cs" />
     <Compile Include="JsonErrorViewModel.cs" />
     <Compile Include="BootstrapperExtensions.cs" />
+    <Compile Include="JsonFullErrorViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
