@@ -107,9 +107,9 @@ function CleanUp()
 
     $nupkgFiles = @(Get-ChildItem $destination -Filter *.nupkg)
 
-    if ($nupkgFiles.Length -gt 0)
+    if ($nupkgFiles.Count -gt 0)
     {
-        "Found " + $nupkgFiles.Length + " *.nupkg files. Lets delete these first..."
+        "Found " + $nupkgFiles.Count + " *.nupkg files. Lets delete these first..."
 
         foreach($nupkgFile in $nupkgFiles)
         {
@@ -138,7 +138,7 @@ function PackageTheSpecifications()
         throw;
     }
 
-    "Found: " + $files.Length + " files :)"
+    "Found: " + $files.Count + " files :)"
 
     foreach($file in $files)
     {
@@ -171,7 +171,7 @@ function PushThePackagesToNuGet()
         throw;
     }
 
-    "Found: " + $files.Length + " files :)"
+    "Found: " + $files.Count + " files :)"
 
     foreach($file in $files)
     {
@@ -188,6 +188,7 @@ $ErrorActionPreference = "Stop"
 $global:nugetExe = ""
 
 cls
+
 
 ""
 " ---------------------- start script ----------------------"
