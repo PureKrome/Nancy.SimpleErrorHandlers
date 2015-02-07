@@ -3,11 +3,11 @@ using Nancy.TinyIoc;
 
 namespace Nancy.SimpleErrorHandlers.Tests
 {
-    public class JsonErrorsBootstrapper : DefaultNancyBootstrapper
+    public class TestBootstrapper : DefaultNancyBootstrapper
     {
         private readonly bool _includeSecretInformation;
 
-        public JsonErrorsBootstrapper(bool includeSecretInformation = false)
+        public TestBootstrapper(bool includeSecretInformation = false)
         {
             _includeSecretInformation = includeSecretInformation;
         }
@@ -16,7 +16,7 @@ namespace Nancy.SimpleErrorHandlers.Tests
         {
             base.ApplicationStartup(container, pipelines);
 
-            pipelines.AnyExceptionAsJson(_includeSecretInformation);
+            pipelines.IncludeExtraInformationInJsonErrorExceptions(_includeSecretInformation);
         }
     }
 }

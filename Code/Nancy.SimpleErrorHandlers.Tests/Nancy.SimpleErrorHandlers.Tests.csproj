@@ -51,7 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="JsonErrorsBootstrapper.cs" />
+    <Compile Include="TestBootstrapper.cs" />
     <Compile Include="TestModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestModuleFacts.cs" />

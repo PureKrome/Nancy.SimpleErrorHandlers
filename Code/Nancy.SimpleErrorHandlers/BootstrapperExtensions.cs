@@ -4,22 +4,20 @@ namespace Nancy.SimpleErrorHandlers
 {
     public static class BootstrapperExtensions
     {
-        internal const string AnyExceptionAsJsonKey = "AnyExceptionAsJsonKey";
-        internal const string IncludeSecretInformationForExceptionsKey = "IncludeSecretInformationForExceptionsKey";
+        internal const string IncludeExtraInformationForExceptionsKey = "IncludeExtraInformationForExceptionsKey";
 
         /// <summary>
-        /// Wires up any exception to be caught and then rendered as a Json response.
+        /// Includes any extra information in json error exceptions.
         /// </summary>
         /// <param name="pipelines"></param>
-        /// <param name="includeSecretInformation">Should we include secret information in the output?</param>
-        /// <remarks>Secret information include stacktrace, etc. Default = false.</remarks>
-        public static void AnyExceptionAsJson(this IPipelines pipelines,
-            bool includeSecretInformation = false)
+        /// <param name="includeExtraInformation">Should we include secret information in the output?</param>
+        /// <remarks>Extra information includes stacktrace, etc. Default = false.</remarks>
+        public static void IncludeExtraInformationInJsonErrorExceptions(this IPipelines pipelines,
+            bool includeExtraInformation = false)
         {
             pipelines.OnError += (context, exception) =>
             {
-                context.Items.Add(AnyExceptionAsJsonKey, exception);
-                context.IncludeSecretInformationForJsonErrorExceptions(includeSecretInformation);
+                context.IncludeSecretInformationForJsonErrorExceptions(includeExtraInformation);
                 return null;
             };
         }

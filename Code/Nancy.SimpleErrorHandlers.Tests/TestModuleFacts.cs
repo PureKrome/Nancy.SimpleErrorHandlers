@@ -12,7 +12,7 @@ namespace Nancy.SimpleErrorHandlers.Tests
             public void GivenAGetRequest_GetSimpleError_ReturnsAJsonResult()
             {
                 // Arrange.
-                var bootstrapper = new JsonErrorsBootstrapper();
+                var bootstrapper = new TestBootstrapper();
                 var browser = new Browser(bootstrapper);
 
                 // Act.
@@ -31,7 +31,7 @@ namespace Nancy.SimpleErrorHandlers.Tests
             public void GivenAGetRequestAndIncludeSomeSecretInformation_GetSimpleError_ReturnsAJsonResult()
             {
                 // Arrange.
-                var bootstrapper = new JsonErrorsBootstrapper(true);
+                var bootstrapper = new TestBootstrapper(true);
                 var browser = new Browser(bootstrapper);
 
                 // Act.
@@ -44,8 +44,8 @@ namespace Nancy.SimpleErrorHandlers.Tests
                 var model = result.Body.DeserializeJson<JsonFullErrorViewModel>();
                 model.Message.ShouldBe("Oh noes! This isn't implemented :(");
                 model.Errors.ShouldBe(null);
-                model.StackTrace.ShouldStartWith("   at Nancy.SimpleErrorHandlers.Tests.TestModule.GetSimpleError()");
-                model.Source.ShouldBe("Nancy.SimpleErrorHandlers.Tests");
+                model.StackTrace.ShouldNotBeEmpty();
+                model.Source.ShouldNotBeEmpty();
             }
         }
 
@@ -55,7 +55,7 @@ namespace Nancy.SimpleErrorHandlers.Tests
             public void GivenAGetRequest_GetComplexError_ReturnsAJsonResult()
             {
                 // Arrange.
-                var bootstrapper = new JsonErrorsBootstrapper();
+                var bootstrapper = new TestBootstrapper();
                 var browser = new Browser(bootstrapper);
 
                 // Act.

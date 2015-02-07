@@ -5,13 +5,13 @@
         public static void IncludeSecretInformationForJsonErrorExceptions(this NancyContext context, bool value)
         {
             if (!value &&
-                context.Items.ContainsKey(BootstrapperExtensions.IncludeSecretInformationForExceptionsKey))
+                context.Items.ContainsKey(BootstrapperExtensions.IncludeExtraInformationForExceptionsKey))
             {
-                context.Items.Remove(BootstrapperExtensions.IncludeSecretInformationForExceptionsKey);
+                context.Items.Remove(BootstrapperExtensions.IncludeExtraInformationForExceptionsKey);
             }
             else
             {
-                context.Items.Add(BootstrapperExtensions.IncludeSecretInformationForExceptionsKey, value);
+                context.Items.Add(BootstrapperExtensions.IncludeExtraInformationForExceptionsKey, value);
             }
         }
     }

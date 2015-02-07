@@ -28,19 +28,20 @@ namespace Nancy.SimpleErrorHandlers
                 throw new ArgumentNullException("context");
             }
 
+            // We grab the exception from the normal NANCY ENGINE key we're using.
             Exception exception = null;
-            if (context.Items.ContainsKey(BootstrapperExtensions.AnyExceptionAsJsonKey))
+            if (context.Items.ContainsKey(NancyEngine.ERROR_EXCEPTION))
             {
-                exception = context.Items[BootstrapperExtensions.AnyExceptionAsJsonKey] as Exception;
+                exception = context.Items[NancyEngine.ERROR_EXCEPTION] as Exception;
             }
 
-            bool includeSecretInformation = false;
-            if (context.Items.ContainsKey(BootstrapperExtensions.IncludeSecretInformationForExceptionsKey))
+            bool includeExtraInformation = false;
+            if (context.Items.ContainsKey(BootstrapperExtensions.IncludeExtraInformationForExceptionsKey))
             {
-                includeSecretInformation = (bool)context.Items[BootstrapperExtensions.IncludeSecretInformationForExceptionsKey];
+                includeExtraInformation = (bool)context.Items[BootstrapperExtensions.IncludeExtraInformationForExceptionsKey];
             }
 
-            var viewModel = includeSecretInformation
+            var viewModel = includeExtraInformation
                 ? new JsonFullErrorViewModel
                 {
                     StackTrace = exception == null
