@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Nancy.ErrorHandling;
 using Nancy.Responses;
 
@@ -55,7 +56,7 @@ namespace Nancy.SimpleErrorHandlers
 
             viewModel.Message = exception == null
                 ? "An error has occured but no exception was provided. So we're not sure what has happened, even though something has. :/"
-                : GetlowestInnerException(exception).Message;
+                : GetLowestInnerException(exception).Message;
 
             var serializer = _jsonSerializer ?? 
                 (_jsonSerializer = _serializers.FirstOrDefault(s => s.CanSerialize("application/json")));
@@ -67,7 +68,7 @@ namespace Nancy.SimpleErrorHandlers
             context.Response = response;
         }
 
-        private static Exception GetlowestInnerException(Exception exception)
+        private static Exception GetLowestInnerException(Exception exception)
         {
             if (exception == null)
             {
