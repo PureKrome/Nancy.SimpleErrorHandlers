@@ -13,7 +13,7 @@ namespace Nancy.SimpleErrorHandlers
         /// <param name="includeExtraInformation">Should we include secret information in the output?</param>
         /// <remarks>Extra information includes stacktrace, etc. Default = false.</remarks>
         public static void IncludeExtraInformationInJsonErrorExceptions(this IPipelines pipelines,
-            bool includeExtraInformation = false)
+            bool includeExtraInformation = true)
         {
             pipelines.OnError += (context, exception) =>
             {
